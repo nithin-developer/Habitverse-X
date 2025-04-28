@@ -1,0 +1,339 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Manage Habits - HabitVerse X{% endblock %}
+
+{% block content %}
+<div class="py-8">
+    <!-- Page Header -->
+    <div class="mb-8">
+        <div class="flex flex-col lg:flex-row items-start justify-between mb-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Habit Management</h1>
+                <p class="text-gray-300">Create, edit, and organize your habits</p>
+            </div>
+            <div class="mt-4 lg:mt-0">
+                <button id="btn-new-habit" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full text-white text-sm font-medium transition-all transform hover:scale-105 inline-flex items-center">
+                    <i class="fas fa-plus mr-2"></i> New Habit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Habit Categories -->
+    <div class="mb-8 flex overflow-x-auto pb-2 space-x-2">
+        <button class="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium hover:bg-white/20 transition-colors whitespace-nowrap active">
+            All Habits
+        </button>
+        <button class="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-colors whitespace-nowrap">
+            <i class="fas fa-dumbbell text-green-400 mr-2"></i> Fitness
+        </button>
+        <button class="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-colors whitespace-nowrap">
+            <i class="fas fa-brain text-purple-400 mr-2"></i> Mental Health
+        </button>
+        <button class="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-colors whitespace-nowrap">
+            <i class="fas fa-book text-blue-400 mr-2"></i> Learning
+        </button>
+        <button class="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-sm font-medium hover:bg-white/10 transition-colors whitespace-nowrap">
+            <i class="fas fa-briefcase text-yellow-400 mr-2"></i> Work
+        </button>
+    </div>
+
+    <!-- Habit List -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Habit Card 1 -->
+        <div class="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+            <div class="flex items-center p-5 border-b border-white/10">
+                <div class="h-12 w-12 rounded-lg bg-green-500/10 border border-green-500/30 flex items-center justify-center mr-4">
+                    <i class="fas fa-dumbbell text-green-400 text-xl"></i>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-bold text-lg">Morning Workout</h3>
+                    <p class="text-sm text-gray-400">Daily • 30 minutes</p>
+                </div>
+                <div class="dropdown relative">
+                    <button class="p-2 hover:bg-white/10 rounded-full transition-colors">
+                        <i class="fas fa-ellipsis-v text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <div class="mb-4">
+                    <p class="text-gray-300">Focus on cardio and strength training to boost energy levels.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm">
+                        <span class="text-green-400 font-medium">75% completion rate</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Edit">
+                            <i class="fas fa-edit text-blue-400"></i>
+                        </button>
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Delete">
+                            <i class="fas fa-trash text-red-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit Card 2 -->
+        <div class="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+            <div class="flex items-center p-5 border-b border-white/10">
+                <div class="h-12 w-12 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center mr-4">
+                    <i class="fas fa-brain text-purple-400 text-xl"></i>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-bold text-lg">Meditation</h3>
+                    <p class="text-sm text-gray-400">Daily • 15 minutes</p>
+                </div>
+                <div class="dropdown relative">
+                    <button class="p-2 hover:bg-white/10 rounded-full transition-colors">
+                        <i class="fas fa-ellipsis-v text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <div class="mb-4">
+                    <p class="text-gray-300">Mindfulness meditation to reduce stress and improve focus.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm">
+                        <span class="text-yellow-400 font-medium">50% completion rate</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Edit">
+                            <i class="fas fa-edit text-blue-400"></i>
+                        </button>
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Delete">
+                            <i class="fas fa-trash text-red-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit Card 3 -->
+        <div class="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+            <div class="flex items-center p-5 border-b border-white/10">
+                <div class="h-12 w-12 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mr-4">
+                    <i class="fas fa-book text-blue-400 text-xl"></i>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-bold text-lg">Read Programming Book</h3>
+                    <p class="text-sm text-gray-400">Daily • 45 minutes</p>
+                </div>
+                <div class="dropdown relative">
+                    <button class="p-2 hover:bg-white/10 rounded-full transition-colors">
+                        <i class="fas fa-ellipsis-v text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <div class="mb-4">
+                    <p class="text-gray-300">Reading programming books to improve coding skills and knowledge.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm">
+                        <span class="text-green-400 font-medium">80% completion rate</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Edit">
+                            <i class="fas fa-edit text-blue-400"></i>
+                        </button>
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Delete">
+                            <i class="fas fa-trash text-red-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habit Card 4 -->
+        <div class="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+            <div class="flex items-center p-5 border-b border-white/10">
+                <div class="h-12 w-12 rounded-lg bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center mr-4">
+                    <i class="fas fa-code text-yellow-400 text-xl"></i>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-bold text-lg">Coding Practice</h3>
+                    <p class="text-sm text-gray-400">Daily • 60 minutes</p>
+                </div>
+                <div class="dropdown relative">
+                    <button class="p-2 hover:bg-white/10 rounded-full transition-colors">
+                        <i class="fas fa-ellipsis-v text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <div class="mb-4">
+                    <p class="text-gray-300">Daily coding practice to improve programming skills and problem-solving abilities.</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm">
+                        <span class="text-green-400 font-medium">90% completion rate</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Edit">
+                            <i class="fas fa-edit text-blue-400"></i>
+                        </button>
+                        <button class="p-2 bg-white/5 hover:bg-white/10 rounded transition-colors" data-tooltip="Delete">
+                            <i class="fas fa-trash text-red-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Habit Modal -->
+    <div id="new-habit-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 hidden">
+        <div class="w-full max-w-md p-6 bg-gradient-to-br from-gray-900 to-gray-800 border border-white/10 rounded-2xl shadow-xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Create New Habit</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="new-habit-form" class="space-y-4">
+                <div>
+                    <label for="habit-title" class="block text-sm font-medium text-gray-300 mb-1">Habit Title</label>
+                    <input type="text" id="habit-title" name="title" required class="future-input w-full" placeholder="e.g., Morning Workout">
+                </div>
+                <div>
+                    <label for="habit-description" class="block text-sm font-medium text-gray-300 mb-1">Description</label>
+                    <textarea id="habit-description" name="description" class="future-input w-full h-20" placeholder="Describe your habit"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="habit-frequency" class="block text-sm font-medium text-gray-300 mb-1">Frequency</label>
+                        <select id="habit-frequency" name="frequency" required class="future-input w-full">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="weekdays">Weekdays</option>
+                            <option value="weekends">Weekends</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="habit-time-goal" class="block text-sm font-medium text-gray-300 mb-1">Time Goal (min)</label>
+                        <input type="number" id="habit-time-goal" name="time_goal" required class="future-input w-full" placeholder="30" min="1">
+                    </div>
+                </div>
+                <div>
+                    <label for="habit-category" class="block text-sm font-medium text-gray-300 mb-1">Category</label>
+                    <select id="habit-category" name="category" required class="future-input w-full">
+                        <option value="fitness">Fitness</option>
+                        <option value="mental">Mental Health</option>
+                        <option value="learning">Learning</option>
+                        <option value="work">Work</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button type="button" id="cancel-habit" class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-white text-sm font-medium mr-2">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-lg text-white text-sm font-medium transition-all transform hover:scale-105">
+                        Create Habit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Modal Controls
+        const modal = document.getElementById('new-habit-modal');
+        const openModalBtn = document.getElementById('btn-new-habit');
+        const closeModalBtn = document.getElementById('close-modal');
+        const cancelBtn = document.getElementById('cancel-habit');
+        const habitForm = document.getElementById('new-habit-form');
+        
+        function openModal() {
+            modal.classList.remove('hidden');
+            // Add slide-in animation
+            const modalContent = modal.querySelector('div');
+            modalContent.classList.add('animate-fadeIn');
+            
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            // Add slide-out animation
+            const modalContent = modal.querySelector('div');
+            modalContent.classList.add('animate-fadeOut');
+            
+            // Wait for animation to complete
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modalContent.classList.remove('animate-fadeOut');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+        
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Form Submission
+        habitForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(habitForm);
+            const habitData = {
+                title: formData.get('title'),
+                description: formData.get('description'),
+                frequency: formData.get('frequency'),
+                time_goal: parseInt(formData.get('time_goal')),
+                category: formData.get('category')
+            };
+            
+            try {
+                // Show loading state
+                const submitBtn = habitForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+                
+                // Make API request (this would be replaced with actual API call)
+                // For demo, we'll simulate the request
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Close modal and reset form
+                closeModal();
+                habitForm.reset();
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                
+                // Show success notification or refresh the habit list
+                alert('Habit created successfully!');
+                
+            } catch (error) {
+                console.error('Failed to create habit:', error);
+                
+                // Reset button
+                const submitBtn = habitForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                
+                // Show error
+                alert('Failed to create habit. Please try again.');
+            }
+        });
+    });
+</script>
+{% endblock %}

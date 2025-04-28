@@ -1,0 +1,257 @@
+{% extends "base/base.html" %}
+
+{% block title %}TimeBank - HabitVerse X{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 timebank-container">
+    <h1 class="text-3xl font-bold text-gradient mb-6">TimeBank</h1>
+    <p class="text-gray-400 mb-8">Convert your hard-earned habit minutes into rewards</p>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Balance and Progress Section -->
+        <div class="col-span-1 lg:col-span-1">
+            <div class="bg-gradient-to-br from-indigo-900/40 to-purple-900/40 rounded-xl p-6 backdrop-blur-md border border-purple-500/30 shadow-glow-sm mb-6">
+                <h2 class="text-xl font-semibold mb-4">Your Balance</h2>
+                
+                <div class="progress-circle mb-6" style="--percent: 2">
+                    <div class="progress-bar"></div>
+                    <div class="progress-content">
+                        <div class="balance-value text-3xl font-bold">20 HVC</div>
+                        <div class="text-sm text-indigo-300">HabitVerse Coins</div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-indigo-300">Next Tier</span>
+                    <span class="text-sm font-medium">20 HVC</span>
+                </div>
+                
+                <div class="text-center mt-6">
+                    <p class="text-sm text-gray-400 mb-2">Total minutes tracked</p>
+                    <p class="text-2xl font-bold">20 min</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-900/40 to-indigo-900/40 rounded-xl p-6 backdrop-blur-md border border-blue-500/30 shadow-glow-sm">
+                <h2 class="text-xl font-semibold mb-4">Conversion Rates</h2>
+                
+                <div class="space-y-4">
+                    <div class="rate-item flex justify-between items-center p-2 rounded-lg hover:bg-white/5">
+                        <div class="rate-label text-sm">Focus Work</div>
+                        <div class="rate-value font-mono">1 min = 2 HVC</div>
+                    </div>
+                    
+                    <div class="rate-item flex justify-between items-center p-2 rounded-lg hover:bg-white/5">
+                        <div class="rate-label text-sm">Exercise</div>
+                        <div class="rate-value font-mono">1 min = 1.5 HVC</div>
+                    </div>
+                    
+                    <div class="rate-item flex justify-between items-center p-2 rounded-lg hover:bg-white/5">
+                        <div class="rate-label text-sm">Reading</div>
+                        <div class="rate-value font-mono">1 min = 1 HVC</div>
+                    </div>
+                    
+                    <div class="rate-item flex justify-between items-center p-2 rounded-lg hover:bg-white/5">
+                        <div class="rate-label text-sm">Meditation</div>
+                        <div class="rate-value font-mono">1 min = 1.5 HVC</div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-blue-500/30">
+                    <p class="text-xs text-gray-400">Rates may vary based on habit impact and current tier</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rewards Section -->
+        <div class="col-span-1 lg:col-span-1">
+            <div class="bg-gradient-to-br from-violet-900/40 to-fuchsia-900/40 rounded-xl p-6 backdrop-blur-md border border-violet-500/30 shadow-glow-sm h-full">
+                <h2 class="text-xl font-semibold mb-4">Available Rewards</h2>
+                
+                <!-- Rewards will be loaded dynamically -->
+                <div class="rewards-container space-y-4">
+                    <div class="loading-indicator text-center py-6">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+                        <p class="mt-2 text-indigo-300">Loading rewards...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Transaction History -->
+        <div class="col-span-1 lg:col-span-1">
+            <div class="bg-gradient-to-br from-blue-900/40 to-cyan-900/40 rounded-xl p-6 backdrop-blur-md border border-blue-500/30 shadow-glow-sm mb-6">
+                <h2 class="text-xl font-semibold mb-4">Recent Transactions</h2>
+                
+                <div class="transaction-list space-y-4">
+                    <!-- Transactions will be loaded dynamically -->
+                    <div class="loading-indicator text-center py-6">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+                        <p class="mt-2 text-indigo-300">Loading transactions...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-900/40 to-indigo-900/40 rounded-xl p-6 backdrop-blur-md border border-purple-500/30 shadow-glow-sm">
+                <h2 class="text-xl font-semibold mb-4">Activity Stats</h2>
+                
+                <div class="activity-list space-y-3">
+                    <div class="activity-item flex items-center">
+                        <div class="activity-icon bg-indigo-900/50 p-2 rounded-full mr-3">⏱️</div>
+                        <div class="activity-details flex-1">
+                            <div class="activity-title font-medium">Focus Work</div>
+                            <div class="activity-stat text-xs text-indigo-300">240 minutes tracked</div>
+                        </div>
+                        <div class="activity-value">480 HVC</div>
+                    </div>
+                    
+                    <div class="activity-item flex items-center">
+                        <div class="activity-icon bg-indigo-900/50 p-2 rounded-full mr-3">🏃</div>
+                        <div class="activity-details flex-1">
+                            <div class="activity-title font-medium">Exercise</div>
+                            <div class="activity-stat text-xs text-indigo-300">90 minutes tracked</div>
+                        </div>
+                        <div class="activity-value">135 HVC</div>
+                    </div>
+                    
+                    <div class="activity-item flex items-center">
+                        <div class="activity-icon bg-indigo-900/50 p-2 rounded-full mr-3">📖</div>
+                        <div class="activity-details flex-1">
+                            <div class="activity-title font-medium">Reading</div>
+                            <div class="activity-stat text-xs text-indigo-300">60 minutes tracked</div>
+                        </div>
+                        <div class="activity-value">60 HVC</div>
+                    </div>
+                    
+                    <div class="activity-item flex items-center">
+                        <div class="activity-icon bg-indigo-900/50 p-2 rounded-full mr-3">🧘</div>
+                        <div class="activity-details flex-1">
+                            <div class="activity-title font-medium">Meditation</div>
+                            <div class="activity-stat text-xs text-indigo-300">30 minutes tracked</div>
+                        </div>
+                        <div class="activity-value">45 HVC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+    /* TimeBank specific styles */
+    .progress-circle {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        margin: 0 auto;
+    }
+    
+    .progress-bar {
+        --percent: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: conic-gradient(
+            rgba(93, 93, 255, 0.8) calc(var(--percent) * 1%), 
+            rgba(93, 93, 255, 0.2) 0%
+        );
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .progress-bar::before {
+        content: '';
+        position: absolute;
+        width: calc(100% - 24px);
+        height: calc(100% - 24px);
+        background: rgba(23, 25, 35, 0.8);
+        border-radius: 50%;
+        backdrop-filter: blur(4px);
+    }
+    
+    .progress-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+    
+    .reward-icon {
+        font-size: 1.75rem;
+    }
+    
+    .reward-icon.premium {
+        color: #ffc107;
+    }
+    
+    .transaction-item:hover {
+        transform: translateX(5px);
+    }
+    
+    .transaction-item.earned {
+        border-left: 3px solid rgba(52, 211, 153, 0.7);
+    }
+    
+    .transaction-item.spent {
+        border-left: 3px solid rgba(248, 113, 113, 0.7);
+    }
+    
+    .shadow-glow-sm {
+        box-shadow: 0 0 15px 0 rgba(93, 93, 255, 0.15);
+    }
+    
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-5px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    
+    .reward-item {
+        animation: float 4s ease-in-out infinite;
+        animation-delay: calc(var(--i, 0) * 0.5s);
+    }
+    
+    .reward-item:nth-child(1) { --i: 0; }
+    .reward-item:nth-child(2) { --i: 1; }
+    .reward-item:nth-child(3) { --i: 2; }
+    .reward-item:nth-child(4) { --i: 3; }
+    .reward-item:nth-child(5) { --i: 4; }
+    
+    .text-gradient {
+        background: linear-gradient(90deg, #a78bfa, #60a5fa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .loading-spinner {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spinner 0.8s linear infinite;
+    }
+    
+    @keyframes spinner {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+{% endblock %}

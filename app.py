@@ -10,7 +10,7 @@ from config.database import init_db
 from dotenv import load_dotenv
 import os
 from models import *
-from routes import auth, dashboard
+from routes import auth, dashboard, habits, timebank
 
 load_dotenv()
 
@@ -52,6 +52,8 @@ def index():
 
 app.register_blueprint(auth.auth)
 app.register_blueprint(dashboard.dashboard)
+app.register_blueprint(habits.habit)
+app.register_blueprint(timebank.timebank)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5002)
