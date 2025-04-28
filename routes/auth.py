@@ -6,14 +6,18 @@ import uuid
 # import func
 from functools import wraps
 
-auth = Blueprint('auth', __name__)
+auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 @auth.route('/login', methods=['GET'])
 def login_get():
+    if 'user_id' in session:
+        return redirect(url_for('dashboard.dashboard_page'))
     return render_template('auth/login.html')
 
 @auth.route('/register', methods=['GET'])
 def register_get():
+    if 'user_id' in session:
+        return redirect(url_for('dashboard.dashboard_page'))
     return render_template('auth/register.html')
 
 @auth.route('/login', methods=['POST'])
@@ -36,7 +40,7 @@ def login_post():
 
     flash('Login successful', category='success')
 
-    return redirect(url_for('main.home'))
+    return redirect(url_for('dashboard.dashboard_page'))
 
 @auth.route('/register', methods=['POST'])
 def register_post():

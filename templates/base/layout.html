@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}HabitVerse X{% endblock %}</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0070f3",
+              secondary: "#00c4ff",
+              accent: "#7928ca",
+              dark: "#171717",
+              light: "#f8f9fa",
+            },
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+              mono: ["Space Mono", "monospace"],
+            },
+            animation: {
+              "gradient-x": "gradient-x 10s ease infinite",
+              float: "float 3s ease-in-out infinite",
+            },
+            keyframes: {
+              "gradient-x": {
+                "0%, 100%": {
+                  "background-size": "200% 200%",
+                  "background-position": "left center",
+                },
+                "50%": {
+                  "background-size": "200% 200%",
+                  "background-position": "right center",
+                },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+        darkMode: "class",
+      };
+    </script>
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-dark to-gray-900 text-light dark:text-light"
+  >
+    <!-- Particle Effect -->
+    <div
+      class="particle-container fixed w-full h-full top-0 left-0 -z-10"
+    ></div>
+
+    <div class="pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+      {% block content %} {% endblock %}
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

@@ -4,32 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Check for auth token and handle authentication state immediately
-    const token = localStorage.getItem('token');
-    const protectedPages = ['/dashboard', '/habits', '/timebank', '/avatar', '/profile'];
-    const currentPath = window.location.pathname;
-    
-    // If on a protected page but no token, redirect to login
-    if (protectedPages.includes(currentPath) && !token) {
-        window.location.href = '/login';
-        return;
-    }
-    
-    // Apply token to fetch requests if available
-    if (token) {
-        // Verify token validity with a quick API call
-        fetch('/api/verify-token', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).catch(() => {
-            // If token verification fails silently, we'll handle 401s in the authenticatedFetch function
-            console.log('Token verification failed silently');
-        });
-    }
-    
-    // Mobile menu toggle
+      // Mobile menu toggle
     const mobileMenuButton = document.querySelector('#mobile-menu-button');
     const mobileMenu = document.querySelector('#mobile-menu');
     
