@@ -3,7 +3,7 @@ from config.database import db
 
 class Mood(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.String(255), db.ForeignKey('user.user_id'), nullable=False)
     mood_type = db.Column(db.String(50), nullable=False)  # happy, sad, etc.
     notes = db.Column(db.Text, nullable=True)
     date = db.Column(db.Date, nullable=False)
